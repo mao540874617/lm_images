@@ -1,0 +1,7 @@
+FROM r-base:latest
+RUN R -e 'install.packages("ggplot2",repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")' \
+&& R -e 'install.packages("plotrix",repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")' \
+&& R -e 'install.packages("openxlsx",repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
+RUN mkdir /script
+COPY ./pep-cover.R /script
+WORKDIR /script
