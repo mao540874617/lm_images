@@ -1,0 +1,7 @@
+FROM r-base:latest
+RUN R -e 'install.packages("PerformanceAnalytics",repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")' \
+&& R -e 'install.packages("openxlsx",repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
+RUN mkdir /script
+COPY ./work.R /script
+COPY ./1 /script
+WORKDIR /script

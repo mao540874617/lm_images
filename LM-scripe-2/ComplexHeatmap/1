@@ -1,0 +1,10 @@
+FROM r-base:latest
+RUN R -e 'options(BioC_mirror="https://mirrors.tuna.tsinghua.edu.cn/bioconductor")'\
+&& R -e 'install.packages("BiocManager",repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")' \
+&& R -e 'BiocManager::install("ComplexHeatmap")' \
+&& R -e 'install.packages("circlize",repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")' \
+&& R -e 'install.packages("openxlsx",repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
+RUN mkdir /script
+COPY ./work.R /script
+COPY ./1 /script
+WORKDIR /script

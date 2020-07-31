@@ -1,0 +1,12 @@
+FROM r-base:latest
+RUN R -e 'install.packages("dplyr",repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")' \
+&& R -e 'install.packages("stringr",repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")' \
+&& R -e 'install.packages("ggplot2",repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")' \
+&& R -e 'install.packages("ggpubr",repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")' \
+&& R -e 'install.packages("gtable",repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")' \
+&& R -e 'install.packages("grid",repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")' \
+&& R -e 'install.packages("Hmisc",repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
+RUN mkdir /script
+COPY ./work.R /script
+COPY ./1 /script
+WORKDIR /script
